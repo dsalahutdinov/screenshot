@@ -1,0 +1,12 @@
+version: '3.4'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    image: amplifr-screenshot
+    volumes:
+      - ./:/go
+    ports:
+      - 8080:8080
+    command: "go run screenshot.go"
