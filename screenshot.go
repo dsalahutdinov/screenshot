@@ -13,7 +13,7 @@ import (
 
 var ops uint64
 
-func screenshot(targetUrl string) (string, error) {
+func screenshot(targetUrl string, width string, height string) (string, error) {
 	screenshotPath := fmt.Sprintf("/tmp/screenshot%d.png", atomic.AddUint64(&ops, 1))
 
 	fmt.Println(screenshotPath)
@@ -23,7 +23,7 @@ func screenshot(targetUrl string) (string, error) {
 		"--hide-scrollbars",
 		"--disable-crash-reporter",
 		"--screenshot=" + screenshotPath,
-    "--window-size=1120,300",
+    "--window-size=" + width + "," + height,
 	}
 	if os.Geteuid() == 0 {
 		chromeArguments = append(chromeArguments, "--no-sandbox")
@@ -59,7 +59,9 @@ func screenshot(targetUrl string) (string, error) {
 
 func screenshotHandler(w http.ResponseWriter, r *http.Request) {
 	url := r.URL.Query().Get("url")
-	screenshot, _ := screenshot(url)
+  width:= r.URL.Query().Get("width")
+  height := r.URL.Query().Get("height")
+	screenshot, _ := screenshot(url, width, height)
 	http.ServeFile(w, r, screenshot)
 	os.RemoveAll(screenshot)
 }
