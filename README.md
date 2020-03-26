@@ -17,7 +17,7 @@ wget http://localhost:8080/screenshot?width=1180&height=768&url=https://amplifr.
 ## Run with Docker
 
 ```sh
-docker run dsalahutdinov/screenshot -p 8080:8080
+docker run -p 8080:8080 dsalahutdinov/screenshot
 ```
 
 Than just curl for screenshot:
