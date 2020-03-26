@@ -14,4 +14,3 @@ RUN mkdir -p /go
 
 WORKDIR /go
 
-ENTRYPOINT ["--"]

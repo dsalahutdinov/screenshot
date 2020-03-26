@@ -23,7 +23,7 @@ func screenshot(targetUrl string, width string, height string) (string, error) {
 		"--hide-scrollbars",
 		"--disable-crash-reporter",
 		"--screenshot=" + screenshotPath,
-    "--window-size=" + width + "," + height,
+		"--window-size=" + width + "," + height,
 	}
 	if os.Geteuid() == 0 {
 		chromeArguments = append(chromeArguments, "--no-sandbox")
@@ -59,14 +59,19 @@ func screenshot(targetUrl string, width string, height string) (string, error) {
 
 func screenshotHandler(w http.ResponseWriter, r *http.Request) {
 	url := r.URL.Query().Get("url")
-  width:= r.URL.Query().Get("width")
-  height := r.URL.Query().Get("height")
+	width := r.URL.Query().Get("width")
+	height := r.URL.Query().Get("height")
 	screenshot, _ := screenshot(url, width, height)
 	http.ServeFile(w, r, screenshot)
 	os.RemoveAll(screenshot)
 }
 
+func healthHandler(w http.ResponseWriter, r *http.Request) {
+	w.WriteHeader(http.StatusOK)
+}
+
 func main() {
 	http.HandleFunc("/screenshot", screenshotHandler)
+	http.HandleFunc("/health", healthHandler)
 	http.ListenAndServe(":8080", nil)
 }
