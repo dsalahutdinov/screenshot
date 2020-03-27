@@ -32,7 +32,7 @@ To run on Kubernetes cluster:
 
 ```sh
 kubectl create ns screenshot
-kubectl create deployment -n screenshot --image=dsalahutdinov/screenshot screenshotkubectl create deployment -n screenshot --image=dsalahutdinov/screenshot screenshot
+kubectl create deployment -n screenshot --image=dsalahutdinov/screenshot screenshot
 kubectl expose -n screenshot deployment screenshot --port=80 --target-port=8080
 ```
 
