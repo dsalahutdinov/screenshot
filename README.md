@@ -26,6 +26,33 @@ Than just curl for screenshot:
 curl http://localhost:8080/screenshot/?width=1180&height=768&url=https://amplifr.com
 ```
 
+## Helm
+
+Install screenshot service from [Helm repository](https://github.com/dsalahutdinov/screenshot-helm):
+
+```sh
+$ helm repo add screenshot-helm https://dsalahutdinov.github.io/screenshot-helm/   (minikube/default)
+"screenshot-helm" has been added to your repositories
+$ helm install screenshot-helm/screenshot --name screenshot --namespace screenshot
+NAME:   screenshot
+LAST DEPLOYED: Sat Apr  4 16:59:02 2020
+NAMESPACE: screenshot
+STATUS: DEPLOYED
+
+RESOURCES:
+==> v1/Deployment
+NAME         AGE
+screenshot  1s
+
+==> v1/Pod(related)
+NAME                      AGE
+screenshot-76948b-rrq77  1s
+
+==> v1/Service
+NAME         AGE
+screenshot  1s
+```
+
 ## Kubernetes
 
 To run on Kubernetes cluster:
