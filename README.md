@@ -31,7 +31,7 @@ curl http://localhost:8080/screenshot/?width=1180&height=768&url=https://amplifr
 Install screenshot service from [Helm repository](https://github.com/dsalahutdinov/screenshot-helm):
 
 ```sh
-$ helm repo add screenshot-helm https://dsalahutdinov.github.io/screenshot-helm/   (minikube/default)
+$ helm repo add screenshot-helm https://dsalahutdinov.github.io/screenshot-helm/
 "screenshot-helm" has been added to your repositories
 $ helm install screenshot-helm/screenshot --name screenshot --namespace screenshot
 NAME:   screenshot
