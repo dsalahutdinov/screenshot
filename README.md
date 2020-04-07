@@ -1,3 +1,7 @@
+<a href="https://amplifr.com/?utm_source=screenshot">
+  <img width="100" height="140" align="right"
+    alt="Sponsored by Amplifr" src="https://amplifr-direct.s3-eu-west-1.amazonaws.com/social_images/image/37b580d9-3668-4005-8d5a-137de3a3e77c.png" />
+</a>
 # Browser screenshot service
 
 Written with Golang, it uses the headless Google Chrome in Docker container to generate screenshot.
